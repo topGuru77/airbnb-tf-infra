@@ -17,6 +17,7 @@ pipeline {
             steps {
                 echo 'cloning code base with jenkins server'
                 echo 'testing CI code base with jenkins server'
+                echo 'testing CD code base with jenkins server'
                 git branch: 'main', credentialsId: '2802993a-6d2b-4062-a3ba-e7aba5749144', url: 'https://github.com/topGuru77/airbnb-tf-infra.git'
                 sh 'ls'
             }
