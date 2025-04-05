@@ -1,3 +1,8 @@
+def COLOR_MAP = [
+    'SUCCESS': 'good',
+    'FAILURE': 'danger',
+    ]
+
 pipeline {
     agent any
     
@@ -41,6 +46,13 @@ pipeline {
             }
         }
             
+    }
+
+    post { 
+        always { 
+            echo 'sending build result!'
+            slackSend channel: "#et-devops-team", color: COLOR_MAP[currentBuild.currentResult], message: "Build Started by Patrick: ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }
     }
 
   
